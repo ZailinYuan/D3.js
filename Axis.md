@@ -32,3 +32,15 @@ Always calculate scale dynamically to fit the whole chart in the viewbox. Below 
 ```html
 <svg overflow="scroll" viewBox="0, 0, 500, 300" ref={svgRef}></svg>
 ```
+
+### Axis options:
+##### Ticks
+```javascript
+  const axisX = d3
+      .axisBottom(scaleX)
+      .tickFormat(formatCurrency)
+      .ticks(5)
+```
+tickFormat is how to display axis tick label. ticks is how many ticks displayed. See more ticks on google.
+
+    .tickSize(3)
