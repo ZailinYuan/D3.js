@@ -47,7 +47,7 @@ tickFormat is how to display axis tick label. ticks is how many ticks displayed.
 
 ### Axis example with axis shift
 ```javascript
-const svgRef = useRef()
+    const svgRef = useRef()
     const width = 750, height = 500
     const margin = {
         top: 50,
