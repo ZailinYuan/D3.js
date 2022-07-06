@@ -128,3 +128,23 @@ tickFormat is how to display axis tick label. ticks is how many ticks displayed.
             .style('color', '#808080')
             .style('stroke-width', '0.5')
 ```
+### 扩展 Axis 范围， 增加一个 tick interval 宽度
+```javascript
+        const scale_y = d3.scaleLinear()
+            .domain(d3.extent(yData))
+            .range([margin.left, width - margin.right])
+        const axis_y = d3
+            .axisLeft(scale_y)
+            .ticks(10)
+        const ticks_y = axis_y.scale().ticks()
+        let yAxisDomain
+        if(ticks_y.length === 0) {
+            yAxisDomain = d3.extent([-1, 0, 1])
+        } else if(ticks_y.length === 1) {
+            let base = ticks_y[0]
+            yAxisDomain = d3.extent([base - 1, base + 1])
+        } else {
+            let interval = Math.abs(ticks_y[1] - ticks_y[0])
+            yAxisDomain = [ticks_y[0] - interval, ticks_y[ticks_y.length-1] + interval]
+        }
+```
